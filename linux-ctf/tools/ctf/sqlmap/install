@@ -1,0 +1,15 @@
+#!/bin/bash
+
+install-packages \
+	libsqlite3-dev \
+	libmysqlclient-dev \
+	libpq-dev 
+
+install-pip \
+	mysql \
+	psycopg2 \
+	pysqlite \
+	python-ntlm 
+
+download-git https://github.com/sqlmapproject/sqlmap.git ; cd ${P} ;\
+	sudo ln -s ${PWD}/sqlmap.py ${BIN_LOCAL_PATH}

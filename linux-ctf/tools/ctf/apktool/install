@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+install-packages \
+	default-jre
+
+download-url https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool ; \
+	sudo mv ${P} ${BIN_LOCAL_PATH}
+
+download-url https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.0.2.jar ; \
+	sudo mv ${P} ${BIN_LOCAL_PATH}/apktool.jar 
+
+sudo chmod 755 ${BIN_LOCAL_PATH}/apktool ${BIN_LOCAL_PATH}/apktool.jar

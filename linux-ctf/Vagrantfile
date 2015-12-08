@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.define "ctf-linux32", primary: true  do |ctf32|
+    ctf32.vm.box = "ubuntu/trusty32"
+  end
+
+  config.vm.define "ctf-linux64" do |ctf64|
+    ctf64.vm.box = "ubuntu/trusty64"
+  end
+
+  config.ssh.forward_x11 = true
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+  end
+
+
+  config.vm.provision "file", source: "tools", destination: "tools"
+  config.vm.provision "file", source: "conf", destination: "conf"
+  config.vm.provision "file", source: "lib", destination: "lib"
+  config.vm.provision "file", source: "setup.sh", destination: "setup.sh"
+  config.vm.provision "shell", path: "setup.sh", privileged: false
+end

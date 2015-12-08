@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+MSF_PATH=${OPT_PATH}/metasploit-framework
+SYSTEM_RUBY_VERSION="ruby-2.1.3"
+SYSTEM_RUBY_GEMSET="global"
+
+MSF_PASSWORD=$(< /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-32})
+MSF_PASSWORDTESTUSER=$(< /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-32})
+
+sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+curl -L https://get.rvm.io | sudo bash -s stable
+source /etc/profile.d/rvm.sh
+export rvmsudo_secure_path=1
+echo "export rvmsudo_secure_path=1" >> ~/.bash_profile
+
+RVM_BIN=`which rvm`
+
+sudo $RVM_BIN autolibs enable
+sudo $RVM_BIN install $SYSTEM_RUBY_VERSION --auto-dotfiles
+sudo $RVM_BIN use $SYSTEM_RUBY_VERSION@$SYSTEM_RUBY_GEMSET --default --create
+
+sudo git clone https://github.com/rapid7/metasploit-framework ${MSF_PATH}
+sudo $RVM_BIN install $(cat ${MSF_PATH}/.ruby-version) --auto-dotfiles
+cd ${MSF_PATH}; rvmsudo bundle install

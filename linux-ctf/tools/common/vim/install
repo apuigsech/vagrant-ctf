@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+install-packages \
+	vim
+
+download-git https://github.com/amix/vimrc.git ; \
+	sudo ln -f -s ${P}/vimrcs/basic.vim /etc/vim/vimrc

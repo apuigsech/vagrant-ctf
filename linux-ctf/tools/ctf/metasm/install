@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+download-git https://github.com/jjyg/metasm.git ; cd ${P} ; \
+	echo "TODO"

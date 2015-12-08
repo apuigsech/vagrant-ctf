@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+download-git https://github.com/devttys0/binwalk.git ; cd ${P} ; \
+	sudo pip install -e .

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+download-git https://github.com/longld/peda.git ; cd ${P} ; \
+	echo "source ${P}/peda.py" >> ~/.gdbinit
