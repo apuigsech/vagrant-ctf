@@ -15,7 +15,7 @@ function install-pip {
 function download-git {
 	git_url=$1
 	git_name=$(basename $1 | cut -d . -f1)
-	sudo git clone $1 ${SRC_LOCAL_PATH}/${git_name} > /dev/null
+	sudo git clone --depth 1 $1 ${SRC_LOCAL_PATH}/${git_name} > /dev/null
 	P=${SRC_LOCAL_PATH}/${git_name}
 }
 
