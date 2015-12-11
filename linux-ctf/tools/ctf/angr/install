@@ -1,0 +1,17 @@
+#/bin/bash -e
+
+install-packages \
+	virtualenvwrapper \
+	python2.7-dev \
+	build-essential \
+	libxml2-dev \
+	libxslt1-dev \
+	libffi-dev \
+	cmake \
+	libreadline-dev \
+	python-qt4 \
+	python-sip \
+	python-pygraphviz \
+
+download-git https://github.com/angr/angr-dev ; cd ${P} ; \
+	sudo ./setup.sh
