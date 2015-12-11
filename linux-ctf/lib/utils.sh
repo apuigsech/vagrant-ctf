@@ -31,20 +31,52 @@ function download-url {
 	name=$(basename $1)
 	ext=$(basename $1 | cut -d . -f2-)
 	sudo wget $1 -O ${SRC_LOCAL_PATH}/${name} -o /dev/null > /dev/null
-	case $ext in
-		"tar")
-			sudo tar xf ${SRC_LOCAL_PATH}/${name} -C ${SRC_LOCAL_PATH} > /dev/null
-			;;
-		"tgz")
-			sudo tar xzf ${SRC_LOCAL_PATH}/${name} -C ${SRC_LOCAL_PATH} > /dev/null
-			;;
-		"tar.gz")
-			sudo tar xzf ${SRC_LOCAL_PATH}/${name} -C ${SRC_LOCAL_PATH} > /dev/null
-			;;
-		"zip")
-			sudo unzip ${SRC_LOCAL_PATH}/${name} > /dev/null
-			;;
-	esac
+	cd ${SRC_LOCAL_PATH} ; extract ${name} > /dev/null ; cd -
 	P=${SRC_LOCAL_PATH}/${name}
 }
 
+function extract()
+{
+     if [ -f $1 ] ; then
+         case $1 in
+            *.tar.bz2)   
+                sudo tar xvjf $1
+                ;;
+            *.tar.gz)    
+                sudo tar xvzf $1     
+                ;;
+            *.bz2)       
+                sudo bunzip2 $1      
+                ;;
+            *.rar)
+                sudo unrar x $1      
+                ;;
+            *.gz)
+                sudo gunzip $1       
+                ;;
+            *.tar)
+                sudo tar xvf $1      
+                ;;
+            *.tbz2)
+                sudo tar xvjf $1     
+                ;;
+            *.tgz)
+                sudo tar xvzf $1     
+                ;;
+            *.zip)
+                sudo unzip $1        
+                ;;
+            *.Z)
+                sudo uncompress $1   
+                ;;
+            *.7z)
+                sudo 7z x $1         
+                ;;
+            *)  
+                echo "'$1' cannot be extracted via extract" 
+                ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
