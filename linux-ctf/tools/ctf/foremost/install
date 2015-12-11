@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+download-url http://foremost.sourceforge.net/pkg/foremost-1.5.7.tar.gz ; cd ${SRC_LOCAL_PATH}/foremost-1.5.7 ; \
+	sudo make & sudo make install
