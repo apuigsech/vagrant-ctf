@@ -35,6 +35,13 @@ function download-url {
 	P=${SRC_LOCAL_PATH}/${name}
 }
 
+function make-install {
+	opts=$@
+	sudo ./configure --prexix=${LOCAL_PATH} ${opts} >/dev/null
+	sudo make > /dev/null
+	sudo make instal > /dev/null
+}
+
 function extract()
 {
      if [ -f $1 ] ; then

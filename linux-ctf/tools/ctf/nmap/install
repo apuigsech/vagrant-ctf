@@ -5,4 +5,4 @@ install-packages \
 	autoconf
 
 download-svn https://svn.nmap.org/nmap ${SRC_LOCAL_PATH}/nmap ; cd ${P} ; \
-	sudo ./configure && sudo make && sudo make install > /dev/null
+	make-install

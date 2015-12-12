@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
 download-git https://github.com/radare/radare2.git ; cd ${P} ; \
-	sudo ./configure && sudo make && sudo make install > /dev/null
+	make-install
 
 download-git https://github.com/radare/radare2-bindings.git 
