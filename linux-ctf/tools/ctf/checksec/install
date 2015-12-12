@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+download-git https://github.com/slimm609/checksec.sh ; cd ${P} ;
+	ls -s $PWD/checksec $BIN_LOCAL_PWD
