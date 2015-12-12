@@ -1,4 +1,5 @@
 #!/bin/bash
 
 install-packages \
-	gdb
+	gdb \
+	gdb-multiarch
