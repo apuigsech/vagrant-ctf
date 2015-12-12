@@ -1,5 +1,7 @@
 #/bin/bash -e
 
+VIRTUAL_ENV=/opt/virtualenv/angr
+
 install-packages \
 	virtualenvwrapper \
 	python2.7-dev \
@@ -11,7 +13,13 @@ install-packages \
 	libreadline-dev \
 	python-qt4 \
 	python-sip \
-	python-pygraphviz \
+	python-pygraphviz
+
+sudo mkdir -p $VIRTUAL_ENV/lib/python2.7/site-packages/ ; \
+	sudo virtualenv $VIRTUAL_ENV
+	sudo ln -s /usr/lib/python2.7/dist-packages/PyQt4 $VIRTUAL_ENV/lib/python2.7/site-packages/ ; \
+	sudo ln -s /usr/lib/python2.7/dist-packages/sip.so $VIRTUAL_ENV/lib/python2.7/site-packages/ ; \
+	sudo ln -s /usr/lib/pymodules/python2.7/pygraphviz $VIRTUAL_ENV/lib/python2.7/site-packages/
 
 download-git https://github.com/angr/angr-dev ; cd ${P} ; \
 	sudo ./setup.sh

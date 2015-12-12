@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 install-packages \
-	g++ autoconf
+	g++ \
+	autoconf
 
 download-svn https://svn.nmap.org/nmap ${SRC_LOCAL_PATH}/nmap ; cd ${P} ; \
 	sudo ./configure && sudo make && sudo make install > /dev/null
