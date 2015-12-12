@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+install-packages \
+	g++ \
+	libtool \
+	libglib2.0-dev \
+	pkg-config \
+	zlib1g-dev \
+	libpixman-1-dev \
+	libfdt-dev
+
+
+download-git git://git.qemu-project.org/qemu.git ; cd ${P} ; \
+	make-install
