@@ -20,8 +20,8 @@ function download-git {
 }
 
 function download-svn {
-	git_url=$1
-	git_name=$(basename $1 | cut -d . -f1)
+	svn_url=$1
+	svn_name=$(basename $1 | cut -d . -f1)
 	sudo svn co $1 ${SRC_LOCAL_PATH}/${git_name} > /dev/null
 	P=${SRC_LOCAL_PATH}/${git_name}
 }
@@ -37,9 +37,9 @@ function download-url {
 
 function make-install {
 	opts=$@
-	sudo ./configure --prexix=${LOCAL_PATH} ${opts} >/dev/null
+	sudo ./configure --prefix=${LOCAL_PATH} ${opts} || echo "./configure is not needed">/dev/null
 	sudo make > /dev/null
-	sudo make instal > /dev/null
+	sudo make install > /dev/null
 }
 
 function extract()

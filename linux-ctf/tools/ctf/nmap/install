@@ -2,7 +2,8 @@
 
 install-packages \
 	g++ \
-	autoconf
+	autoconf \
+	libssl-dev
 
 download-svn https://svn.nmap.org/nmap ${SRC_LOCAL_PATH}/nmap ; cd ${P} ; \
 	make-install
