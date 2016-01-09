@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+download-git https://github.com/ALSchwalm/foresight ; cd ${P} ; \
+	sudo python setup.py install
