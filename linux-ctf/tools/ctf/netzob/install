@@ -17,4 +17,4 @@ install-pip \
 download-git https://dev.netzob.org/git/netzob ; cd ${P} ; \
 	sudo python setup.py build ; \
 	sudo python setup.py develop --user ; \
-	sudo ln -s $PWD/netzob $BIN_LOCAL_PATH
+	sudo ln -fs $PWD/netzob $BIN_LOCAL_PATH

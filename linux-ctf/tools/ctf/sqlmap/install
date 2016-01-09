@@ -12,4 +12,4 @@ install-pip \
 	python-ntlm 
 
 download-git https://github.com/sqlmapproject/sqlmap.git ; cd ${P} ;\
-	sudo ln -s ${PWD}/sqlmap.py ${BIN_LOCAL_PATH}
+	sudo ln -fs ${PWD}/sqlmap.py ${BIN_LOCAL_PATH}
