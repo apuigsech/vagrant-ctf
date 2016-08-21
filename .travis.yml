@@ -1,0 +1,4 @@
+dist: trusty
+
+install:
+	- bash linux-ctf/setup.sh
